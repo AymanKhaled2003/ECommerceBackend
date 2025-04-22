@@ -1,4 +1,4 @@
-﻿using MediatR;
+﻿using Common.Application.Abstractions.Messaging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECommerce.Applicatoin.Features.Auth.Command.Register
+namespace ECommerce.Application.Features.Auth.Command.Register
 {
-    public class RegisterCommand: IRequest<string>
+    public class RegisterCommand: ICommand
     {
         [Required]
         public string UserName { get; set; }

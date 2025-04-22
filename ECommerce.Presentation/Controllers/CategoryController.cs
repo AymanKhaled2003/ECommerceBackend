@@ -36,12 +36,12 @@ namespace ECommerce.Presentation.Controllers
             return HandleResult(result);
         }
 
-        [HttpGet("GetCategoryById")]
-        public async Task<IActionResult> GetCategoryById(GetCategoryByIdQuery quere)
-        {
-            var result = await _mediator.Send(quere);
-            return HandleResult(result);
-        }
+        //[HttpGet("GetCategoryById")]
+        //public async Task<IActionResult> GetCategoryById(GetCategoryByIdQuery quere)
+        //{
+        //    var result = await _mediator.Send(quere);
+        //    return HandleResult(result);
+        //}
 
         [HttpDelete("DeleteCategory")]
         public async Task<IActionResult> DeleteCategory(DeleteCategoryCommand delete)

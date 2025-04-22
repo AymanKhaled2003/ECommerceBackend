@@ -1,4 +1,6 @@
-﻿using ECommerce.Domain.Entities;
+﻿using Common.Application.Abstractions.Messaging;
+using ECommerce.Domain.Entities;
+using ECommerce.Domain.Shared;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -11,10 +13,10 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECommerce.Applicatoin.Features.Auth.Command.Register
+namespace ECommerce.Application.Features.Auth.Command.Register
 {
 
-    public class RegisterCommandHandler : IRequestHandler<RegisterCommand, string>
+    public class RegisterCommandHandler : ICommandHandler<RegisterCommand>
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IConfiguration _configuration;
@@ -25,7 +27,7 @@ namespace ECommerce.Applicatoin.Features.Auth.Command.Register
             _configuration = configuration;
         }
 
-        public async Task<string> Handle(RegisterCommand request, CancellationToken cancellationToken)
+        public async Task<ResponseModel> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
             var user = new ApplicationUser
             {
@@ -57,7 +59,7 @@ namespace ECommerce.Applicatoin.Features.Auth.Command.Register
                 signingCredentials: creds
             );
 
-            return new JwtSecurityTokenHandler().WriteToken(token);
+            return ResponseModel.Success();
         }
     }
 

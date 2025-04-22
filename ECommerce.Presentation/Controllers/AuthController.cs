@@ -1,4 +1,4 @@
-﻿using ECommerce.Applicatoin.Features.Auth.Command.Register;
+﻿using ECommerce.Application.Features.Auth.Command.Register;
 using ECommerce.Presentation.Abstractions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
