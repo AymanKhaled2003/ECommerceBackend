@@ -23,6 +23,13 @@ namespace ECommerce.Domain.Entities
         {
             TotalQuantity = CartItems?.Sum(i => i.Quantity) ?? 0;
             TotalPrice = CartItems?.Sum(i => i.Price * i.Quantity) ?? 0;
+            CreatedOnUtc = DateTime.UtcNow;
+            ModifiedOnUtc = DateTime.UtcNow;
+        }
+        public void CreateCartsToUser(string userId)
+        {
+            UserId = userId;
+            CreatedOnUtc = DateTime.UtcNow;
             ModifiedOnUtc = DateTime.UtcNow;
         }
     }

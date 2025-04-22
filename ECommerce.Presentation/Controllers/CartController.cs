@@ -1,4 +1,4 @@
-﻿using ECommerce.Applicatoin.Features.Cart.Command.AddToCart;
+﻿using ECommerce.Application.Features.Cart.Command.AddToCart;
 using ECommerce.Applicatoin.Features.Cart.Command.RemoveFromCart;
 using ECommerce.Applicatoin.Features.Cart.Query.GetCart;
 using ECommerce.Presentation.Abstractions;
@@ -29,8 +29,8 @@ namespace ECommerce.Presentation.Controllers
             return HandleResult(result);
         }
 
-        [HttpGet("{userId}")]
-        public async Task<IActionResult> GetCartByUserId(GetCartQuery query)
+        [HttpGet("GetCartByUserId")]
+        public async Task<IActionResult> GetCartByUserId([FromQuery] GetCartQuery query)
         {
             var result = await _mediator.Send(query);
             return HandleResult(result);

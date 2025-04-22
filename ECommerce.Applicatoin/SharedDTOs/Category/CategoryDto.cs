@@ -11,7 +11,6 @@ namespace ECommerce.Applicatoin.SharedDTOs.Category
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public Guid ProductId { get; set; }
         public List<ProductDto> Product { get; set; }
     }
 }

@@ -13,7 +13,8 @@ namespace ECommerce.Applicatoin.Specifications.Cart
     {
         public GetCartByUserIdSpec(string userId)
         {
-            AddCriteria(c => c.UserId == userId);   
+            AddCriteria(c => c.UserId == userId);
+            AddInclude(nameof(Carts.CartItems));
         }
     }
 

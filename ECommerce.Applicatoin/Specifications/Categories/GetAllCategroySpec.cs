@@ -13,8 +13,7 @@ namespace ECommerce.Applicatoin.Specifications.Categories
         public GetAllCategorySpec()
         {
             AddInclude(nameof(Domain.Entities.Category.Products));
-            AddOrderBy(x => x.Name);
-            ApplyPaging(0, 10);
+       
         }
     }
    

@@ -16,22 +16,23 @@ namespace ECommerce.Applicatoin.Features.Cart.Query.GetCart
     public class GetCartQueryHandler : IQueryHandler<GetCartQuery, IList<CartDto>>
     {
         private readonly IGenericRepository<Carts> _cartRepository;
+        private readonly ITokenExtractor _tokenExtractor;
 
-        public GetCartQueryHandler(IGenericRepository<Carts> cartRepository)
+        public GetCartQueryHandler(IGenericRepository<Carts> cartRepository, ITokenExtractor tokenExtractor)
         {
             _cartRepository = cartRepository;
+            _tokenExtractor = tokenExtractor;
         }
         public async Task<ResponseModel<IList<CartDto>>> Handle(GetCartQuery request, CancellationToken cancellationToken)
         {
-            // الحصول على الـ userId من الـ request
-            var userId = "";
+            var userId = _tokenExtractor.GetUserId();
 
-            if (string.IsNullOrEmpty(userId))
+            if (string.IsNullOrEmpty(userId.ToString()))
             {
                 return ResponseModel.Failure<IList<CartDto>>("User ID is required");
             }
 
-            var cart = (_cartRepository.GetEntityWithSpec(new GetCartByUserIdSpec(userId)));
+            var cart = (_cartRepository.GetEntityWithSpec(new GetCartByUserIdSpec(userId.ToString())));
 
             if (cart == null)
             {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECommerce.Applicatoin.Features.Cart.Command.AddToCart
+namespace ECommerce.Application.Features.Cart.Command.AddToCart
 {
     public class AddToCartCommand : ICommand
     {

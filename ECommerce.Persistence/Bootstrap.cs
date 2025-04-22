@@ -1,6 +1,7 @@
 ﻿using ECommerce.Domain.Interfaces;
 using ECommerce.Infrastructure.Services;
 using ECommerce.Persistence.Repositories;
+using ECommerce.Persistence.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace ECommerce.Persistence
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddScoped<ITokenExtractor, TokenExtractor>();
 
             return services;
         }

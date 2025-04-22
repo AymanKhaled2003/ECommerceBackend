@@ -1,6 +1,7 @@
 ﻿using ECommerce.Applicatoin.Features.Categorys.Command.AddCategory;
 using ECommerce.Applicatoin.Features.Categorys.Command.DeleteCategory;
 using ECommerce.Applicatoin.Features.Categorys.Command.EditCategory;
+using ECommerce.Applicatoin.Features.Categorys.Query.GetAllCategories;
 using ECommerce.Presentation.Abstractions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -36,12 +37,13 @@ namespace ECommerce.Presentation.Controllers
             return HandleResult(result);
         }
 
-        //[HttpGet("GetCategoryById")]
-        //public async Task<IActionResult> GetCategoryById(GetCategoryByIdQuery quere)
-        //{
-        //    var result = await _mediator.Send(quere);
-        //    return HandleResult(result);
-        //}
+        [HttpGet("GetCategory")]
+        public async Task<IActionResult> GetCategory([FromQuery] GetAllCategoriesQuery query)
+        {
+            var result = await _mediator.Send(query);
+            return HandleResult(result);
+        }
+
 
         [HttpDelete("DeleteCategory")]
         public async Task<IActionResult> DeleteCategory(DeleteCategoryCommand delete)

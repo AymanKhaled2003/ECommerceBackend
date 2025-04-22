@@ -18,14 +18,14 @@ namespace ECommerce.Application.Features.Auth.Command.Login
 
         public async Task<ResponseModel> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
-            var user = await _authService.AuthenticateAsync(request.Username, request.Password);
+            var user = await _authService.AuthenticateAsync(request.Email, request.Password);
 
             if (user == null)
             {
                 return ResponseModel.Failure("Invalid username or password");
             }
 
-            var token = _authService.GenerateJwtToken(user);
+            var token = _authService.Generate(user);
             return ResponseModel.Success(token); // Include token in response
         }
     }

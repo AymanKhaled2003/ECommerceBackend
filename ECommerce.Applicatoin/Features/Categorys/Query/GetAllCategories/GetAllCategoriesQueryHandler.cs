@@ -35,8 +35,12 @@ namespace ECommerce.Applicatoin.Features.Categorys.Query.GetAllCategories
                 {
                     Id = p.Id,
                     Name = p.Name,
-                    Price = p.Price
+                    Price = p.Price,
+                    CategoryId=c.Id,
+                    CategoryName=c.Name,
+                    Description=p.Description
                 }).ToList()
+
             }).ToList();
         }
     }

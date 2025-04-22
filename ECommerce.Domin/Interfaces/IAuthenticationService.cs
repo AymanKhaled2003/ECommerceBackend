@@ -9,7 +9,7 @@ namespace ECommerce.Domain.Interfaces
 {
     public interface IAuthenticationService
     {
-        string GenerateJwtToken(ApplicationUser user);
-        Task<ApplicationUser> AuthenticateAsync(string username, string password);
+        Task<string> Generate(ApplicationUser user);
+      Task<ApplicationUser> AuthenticateAsync(string email, string password);
     }
 }
