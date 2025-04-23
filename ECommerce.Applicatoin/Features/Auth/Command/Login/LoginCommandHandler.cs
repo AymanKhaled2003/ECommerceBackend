@@ -26,7 +26,7 @@ namespace ECommerce.Application.Features.Auth.Command.Login
             }
 
             var token = _authService.Generate(user);
-            return ResponseModel.Success(token); // Include token in response
+            return ResponseModel.Success(token); 
         }
     }
 }

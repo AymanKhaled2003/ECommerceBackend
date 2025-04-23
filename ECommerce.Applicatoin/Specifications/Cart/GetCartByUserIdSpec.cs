@@ -15,6 +15,7 @@ namespace ECommerce.Applicatoin.Specifications.Cart
         {
             AddCriteria(c => c.UserId == userId);
             AddInclude(nameof(Carts.CartItems));
+            AddInclude("CartItems.Product");
         }
     }
 

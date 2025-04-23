@@ -47,6 +47,7 @@ namespace ECommerce.Applicatoin.Features.Cart.Query.GetCart
                 CartItems = cart.CartItems.Select(ci => new CartItemDto
                 {
                     ProductId = ci.ProductId,
+                    ProductName = ci.Product?.Name, // تأكد إنك عملت Include
                     Quantity = ci.Quantity,
                     Price = ci.Price,
                     TotalPrice = ci.Price * ci.Quantity

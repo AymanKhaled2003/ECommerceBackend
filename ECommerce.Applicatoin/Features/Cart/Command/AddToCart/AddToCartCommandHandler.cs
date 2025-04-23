@@ -26,7 +26,7 @@ public class AddToCartCommandHandler : ICommandHandler<AddToCartCommand>
         if (cart == null)
         {
             cart = new Carts();
-            cart.CreateCartsToUser(request.UserId);
+            cart.CreateCartsToUser(userId.ToString());
             await _cartRepo.AddAsync(cart);
             await _cartRepo.SaveChangesAsync();
         }

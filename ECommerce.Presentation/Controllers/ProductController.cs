@@ -1,6 +1,7 @@
 ﻿using ECommerce.Applicatoin.Features.Products.Command.Add;
 using ECommerce.Applicatoin.Features.Products.Command.DeleteProduct;
 using ECommerce.Applicatoin.Features.Products.Command.Edit;
+using ECommerce.Applicatoin.Features.Products.Query.GetAllProduct;
 using ECommerce.Presentation.Abstractions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -36,12 +37,12 @@ namespace ECommerce.Presentation.Controllers
             return HandleResult(result);
         }
 
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> GetProductById(Guid id)
-        //{
-        //    var result = await _mediator.Send(new GetProductByIdQuery(id));
-        //    return HandleResult(result);
-        //}
+        [HttpGet("GetProduct")]
+        public async Task<IActionResult> GetProduct([FromQuery] GetAllProductsQuery query)
+        {
+            var result = await _mediator.Send(query);
+            return HandleResult(result);
+        }
 
         [HttpDelete("delete")]
         public async Task<IActionResult> DeleteProduct(DeleteProductCommand delete)

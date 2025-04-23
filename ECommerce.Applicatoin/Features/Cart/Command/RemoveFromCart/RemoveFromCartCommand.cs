@@ -9,7 +9,6 @@ namespace ECommerce.Applicatoin.Features.Cart.Command.RemoveFromCart
 {
     public class RemoveFromCartCommand : ICommand
     {
-        public string UserId { get; set; } // المستخدم اللي عايز يشيل المنتج
         public Guid ProductId { get; set; } // المنتج اللي عايز يشيله
     }
 }

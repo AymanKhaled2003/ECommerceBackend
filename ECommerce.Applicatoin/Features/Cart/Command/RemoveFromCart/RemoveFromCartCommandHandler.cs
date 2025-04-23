@@ -13,33 +13,38 @@ namespace ECommerce.Applicatoin.Features.Cart.Command.RemoveFromCart
 {
     public class RemoveFromCartCommandHandler : ICommandHandler<RemoveFromCartCommand>
     {
-        private readonly IGenericRepository<Carts> _cartRepository;
-        private readonly IGenericRepository<CartItem> _cartItemRepository;
-
-        public RemoveFromCartCommandHandler(IGenericRepository<Carts> cartRepository, IGenericRepository<CartItem> cartItemRepository)
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly ITokenExtractor _tokenExtractor;
+        public RemoveFromCartCommandHandler(
+            ITokenExtractor tokenExtractor, IUnitOfWork unitOfWork)
         {
-            _cartRepository = cartRepository;
-            _cartItemRepository = cartItemRepository;
+
+            _tokenExtractor = tokenExtractor;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<ResponseModel> Handle(RemoveFromCartCommand request, CancellationToken cancellationToken)
         {
-            var cart =  _cartRepository.GetEntityWithSpec(new GetCartByUserIdSpec(request.UserId));
+            var userId = _tokenExtractor.GetUserId();
+
+            var cart = _unitOfWork.Repository<Carts>().GetEntityWithSpec(new GetCartByUserIdSpec(userId.ToString()));
             if (cart == null)
                 return ResponseModel.Failure("Cart not found");
 
-            var cartItem =  _cartItemRepository.GetEntityWithSpec(new GetCartItemByProductIdAndCartIdSpecification(cart.Id,request.ProductId));
+            var cartItem = _unitOfWork.Repository<CartItem>().GetEntityWithSpec(new GetCartItemByProductIdAndCartIdSpecification(cart.Id, request.ProductId));
             if (cartItem == null)
                 return ResponseModel.Failure("Product not found in cart");
 
-            _cartItemRepository.Delete(cartItem);
-
+            cart.CartItems.Remove(cartItem);
+            _unitOfWork.Repository<CartItem>().Delete(cartItem);
             cart.RecalculateTotals();
+            _unitOfWork.Repository<Carts>().Update(cart);
 
-            await _cartRepository.SaveChangesAsync(cancellationToken);
+            await _unitOfWork.CompleteAsync(cancellationToken);
 
             return ResponseModel.Success("Product removed from cart successfully");
         }
     }
-
 }
+
+
