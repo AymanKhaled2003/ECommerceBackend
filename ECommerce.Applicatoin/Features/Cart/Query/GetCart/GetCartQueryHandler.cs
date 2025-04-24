@@ -1,4 +1,5 @@
 ﻿using Common.Application.Abstractions.Messaging;
+using ECommerce.Application.Features.Cart.Query.GetCart;
 using ECommerce.Applicatoin.SharedDTOs.CartItems;
 using ECommerce.Applicatoin.SharedDTOs.Carts;
 using ECommerce.Applicatoin.Specifications.Cart;
@@ -47,7 +48,7 @@ namespace ECommerce.Applicatoin.Features.Cart.Query.GetCart
                 CartItems = cart.CartItems.Select(ci => new CartItemDto
                 {
                     ProductId = ci.ProductId,
-                    ProductName = ci.Product?.Name, // تأكد إنك عملت Include
+                    ProductName = ci.Product?.Name, 
                     Quantity = ci.Quantity,
                     Price = ci.Price,
                     TotalPrice = ci.Price * ci.Quantity

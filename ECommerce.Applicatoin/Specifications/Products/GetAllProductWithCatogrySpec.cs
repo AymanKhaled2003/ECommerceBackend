@@ -1,4 +1,4 @@
-﻿using ECommerce.Applicatoin.Features.Products.Query.GetAllProduct;
+﻿using ECommerce.Application.Features.Products.Query.GetAllProduct;
 using ECommerce.Domain.Entities;
 using ECommerce.Domain.Specification;
 using MediatR;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
-namespace ECommerce.Applicatoin.Specifications.Products
+namespace ECommerce.Application.Specifications.Products
 {
     internal class GetAllProductWithCategorySpec : Specification<Product>
     {

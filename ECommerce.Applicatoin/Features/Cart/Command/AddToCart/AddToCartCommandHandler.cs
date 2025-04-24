@@ -39,13 +39,13 @@ public class AddToCartCommandHandler : ICommandHandler<AddToCartCommand>
 
         if (cartItem == null)
         {
-            cartItem = new CartItem
-            {
-                CartId = cart.Id,
-                ProductId = request.ProductId,
-                Quantity = request.Quantity,
-                Price = product.Price
-            };
+            cartItem = new CartItem();
+            cartItem.SetDataCartItem(
+                cart.Id,
+                 request.ProductId,
+                request.Quantity,
+                 product.Price);
+            
             await _unitOfWork.Repository<CartItem>().AddAsync(cartItem);
         }
         else

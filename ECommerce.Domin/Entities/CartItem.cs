@@ -18,7 +18,14 @@ namespace ECommerce.Domain.Entities
         public Product Product { get; set; }
 
         public int Quantity { get; set; }
-        public decimal Price { get; set; } 
+        public decimal Price { get; set; }
+        public void SetDataCartItem(Guid cartId, Guid productId, int quantity, decimal price)
+        {
+            CartId = cartId;
+            ProductId = productId;
+            Quantity = quantity;
+            Price = price;
+        }
     }
 
 

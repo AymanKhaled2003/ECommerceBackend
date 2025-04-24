@@ -1,7 +1,8 @@
-﻿using ECommerce.Applicatoin.Features.Categorys.Command.AddCategory;
-using ECommerce.Applicatoin.Features.Categorys.Command.DeleteCategory;
-using ECommerce.Applicatoin.Features.Categorys.Command.EditCategory;
-using ECommerce.Applicatoin.Features.Categorys.Query.GetAllCategories;
+﻿
+using ECommerce.Application.Features.Categories.Command.AddCategory;
+using ECommerce.Application.Features.Categories.Command.DeleteCategory;
+using ECommerce.Application.Features.Categories.Command.EditCategory;
+using ECommerce.Application.Features.Categories.Query.GetAllCategories;
 using ECommerce.Presentation.Abstractions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

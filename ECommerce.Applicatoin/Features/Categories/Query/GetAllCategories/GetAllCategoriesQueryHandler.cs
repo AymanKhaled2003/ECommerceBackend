@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECommerce.Applicatoin.Features.Categorys.Query.GetAllCategories
+namespace ECommerce.Application.Features.Categories.Query.GetAllCategories
 {
     public class GetAllCategoriesQueryHandler : IQueryHandler<GetAllCategoriesQuery, IList<CategoryDto>>
     {

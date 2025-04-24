@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECommerce.Applicatoin.Features.Categorys.Command.DeleteCategory
+namespace ECommerce.Application.Features.Categories.Command.DeleteCategory
 {
     public class DeleteCategoryCommand : ICommand
     {

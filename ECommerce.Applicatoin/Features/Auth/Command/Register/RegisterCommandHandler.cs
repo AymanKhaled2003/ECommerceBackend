@@ -1,5 +1,6 @@
 ﻿using Common.Application.Abstractions.Messaging;
 using ECommerce.Domain.Entities;
+using ECommerce.Domain.Interfaces;
 using ECommerce.Domain.Shared;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
@@ -19,12 +20,15 @@ namespace ECommerce.Application.Features.Auth.Command.Register
     public class RegisterCommandHandler : ICommandHandler<RegisterCommand>
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly IConfiguration _configuration;
+        private readonly IConfiguration _configuration; 
+        private readonly IAuthenticationService _authService;
 
-        public RegisterCommandHandler(UserManager<ApplicationUser> userManager, IConfiguration configuration)
+
+        public RegisterCommandHandler(UserManager<ApplicationUser> userManager, IConfiguration configuration, IAuthenticationService authService)
         {
             _userManager = userManager;
             _configuration = configuration;
+            _authService = authService;
         }
 
         public async Task<ResponseModel> Handle(RegisterCommand request, CancellationToken cancellationToken)
@@ -39,25 +43,11 @@ namespace ECommerce.Application.Features.Auth.Command.Register
             if (!result.Succeeded)
             {
                 var errors = string.Join(", ", result.Errors.Select(e => e.Description));
-                throw new Exception($"Registration failed: {errors}");
+                return  ResponseModel.Failure($"Registration failed: {errors}");
             }
 
-            var claims = new[]
-            {
-            new Claim(ClaimTypes.NameIdentifier, user.Id),
-            new Claim(ClaimTypes.Email, user.Email),
-            new Claim(ClaimTypes.Name, user.UserName)
-        };
+            var token = _authService.Generate(user);
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-            var token = new JwtSecurityToken(
-                issuer: _configuration["Jwt:Issuer"],
-                claims: claims,
-                expires: DateTime.UtcNow.AddDays(7),
-                signingCredentials: creds
-            );
 
             return ResponseModel.Success();
         }

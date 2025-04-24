@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECommerce.Applicatoin.Features.Products.Command.DeleteProduct
+namespace ECommerce.Application.Features.Products.Command.DeleteProduct
 {
     public class DeleteProductCommandHandler : ICommandHandler<DeleteProductCommand>
     {

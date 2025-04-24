@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECommerce.Applicatoin.Features.Products.Command.Add
+namespace ECommerce.Application.Features.Products.Command.Add
 {
     internal class AddProductValidator : AbstractValidator<AddProductCommand>
     {

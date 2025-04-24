@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECommerce.Applicatoin.Features.Products.Command.Add
+namespace ECommerce.Application.Features.Products.Command.Add
 {
     public class AddProductCommandHandler:ICommandHandler<AddProductCommand>
     {

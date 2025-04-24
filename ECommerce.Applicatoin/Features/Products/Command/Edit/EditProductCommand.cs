@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECommerce.Applicatoin.Features.Products.Command.Edit
+namespace ECommerce.Application.Features.Products.Command.Edit
 {
     public class EditProductCommand: ICommand
     {

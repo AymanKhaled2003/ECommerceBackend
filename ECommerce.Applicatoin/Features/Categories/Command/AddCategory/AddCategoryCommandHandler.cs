@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECommerce.Applicatoin.Features.Categorys.Command.AddCategory
+namespace ECommerce.Application.Features.Categories.Command.AddCategory
 {
     public class AddCategoryCommandHandler : ICommandHandler<AddCategoryCommand>
     {

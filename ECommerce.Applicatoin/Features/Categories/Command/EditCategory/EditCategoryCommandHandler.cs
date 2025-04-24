@@ -9,26 +9,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECommerce.Applicatoin.Features.Categorys.Command.DeleteCategory
+namespace ECommerce.Application.Features.Categories.Command.EditCategory
 {
-    public class DeleteCategoryCommandHandler : ICommandHandler<DeleteCategoryCommand>
+    public class EditCategoryCommandHandler : ICommandHandler<EditCategoryCommand>
     {
         private readonly IGenericRepository<Category> _categoryRepo;
 
-        public DeleteCategoryCommandHandler(IGenericRepository<Category> categoryRepo)
+        public EditCategoryCommandHandler(IGenericRepository<Category> categoryRepo)
         {
             _categoryRepo = categoryRepo;
         }
 
-        public async Task<ResponseModel> Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
+        public async Task<ResponseModel> Handle(EditCategoryCommand request, CancellationToken cancellationToken)
         {
             var category = await _categoryRepo.GetByIdAsync(request.Id);
             if (category == null)
                 return ResponseModel.Failure("التصنيف غير موجود");
 
-             _categoryRepo.Delete(category);
-            await _categoryRepo.SaveChangesAsync();
-            return ResponseModel.Success("تم حذف التصنيف بنجاح");
+            category.SetData(request.Name??category.Name);
+             _categoryRepo.Update(category);
+            await _categoryRepo.SaveChangesAsync(); 
+            return ResponseModel.Success();
         }
     }
 

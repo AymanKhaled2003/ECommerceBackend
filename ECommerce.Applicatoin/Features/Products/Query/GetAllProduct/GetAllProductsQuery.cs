@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECommerce.Applicatoin.Features.Products.Query.GetAllProduct
+namespace ECommerce.Application.Features.Products.Query.GetAllProduct
 {
     public class GetAllProductsQuery:IQuery<IList<ProductDto>>
     {

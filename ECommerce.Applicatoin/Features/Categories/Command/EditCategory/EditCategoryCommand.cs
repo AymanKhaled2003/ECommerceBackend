@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECommerce.Applicatoin.Features.Categorys.Command.EditCategory
+namespace ECommerce.Application.Features.Categories.Command.EditCategory
 {
     public class EditCategoryCommand : ICommand
     {

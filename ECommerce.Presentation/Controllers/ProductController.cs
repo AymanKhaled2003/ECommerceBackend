@@ -1,7 +1,8 @@
-﻿using ECommerce.Applicatoin.Features.Products.Command.Add;
-using ECommerce.Applicatoin.Features.Products.Command.DeleteProduct;
-using ECommerce.Applicatoin.Features.Products.Command.Edit;
-using ECommerce.Applicatoin.Features.Products.Query.GetAllProduct;
+﻿
+using ECommerce.Application.Features.Products.Command.Add;
+using ECommerce.Application.Features.Products.Command.DeleteProduct;
+using ECommerce.Application.Features.Products.Command.Edit;
+using ECommerce.Application.Features.Products.Query.GetAllProduct;
 using ECommerce.Presentation.Abstractions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

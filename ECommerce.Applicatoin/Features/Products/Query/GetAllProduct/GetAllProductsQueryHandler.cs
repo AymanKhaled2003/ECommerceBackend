@@ -1,6 +1,6 @@
 ﻿using Common.Application.Abstractions.Messaging;
+using ECommerce.Application.Specifications.Products;
 using ECommerce.Applicatoin.SharedDTOs.Product;
-using ECommerce.Applicatoin.Specifications.Products;
 using ECommerce.Domain.Entities;
 using ECommerce.Domain.Interfaces;
 using ECommerce.Domain.Shared;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECommerce.Applicatoin.Features.Products.Query.GetAllProduct
+namespace ECommerce.Application.Features.Products.Query.GetAllProduct
 {
     public class GetAllProductsQueryHandler : IQueryHandler<GetAllProductsQuery, IList<ProductDto>>
     {

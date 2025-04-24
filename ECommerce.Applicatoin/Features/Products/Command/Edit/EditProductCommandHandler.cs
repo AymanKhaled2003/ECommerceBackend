@@ -7,7 +7,7 @@ using ECommerce.Domain.Interfaces;
 using ECommerce.Domain.Shared;
 using MediatR;
 
-namespace ECommerce.Applicatoin.Features.Products.Command.Edit
+namespace ECommerce.Application.Features.Products.Command.Edit
 {
    
 
